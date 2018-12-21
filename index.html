@@ -11,9 +11,114 @@
         <h1>Onmyoji Application</h1>
       </th></tr>
     </table>
-    
     <hr />
     
+    <!-- label on top -->
+    <table>
+      <tr>
+        <td>Skill %</td>
+        <td>Attack</td>
+        <td>Soul</td> 
+        <td>Critial</td>
+        <td>Critical<br />Damage</td>
+        <td>Atk/Dmg Buff</td>
+        <td>Oitsuki<br />Clear Moon</td>
+        <td>Death</td>
+        <td>Bind</td>
+        <td>Total Damage</td>
+        <td>Calculate!</td>
+      </tr>
+      
+      <tr>
+        
+        <!-- Skill Percentage -->
+        <td>
+          <form>
+            <input type = "number" value = "0" name = "skill" />
+          </form>
+        </td>
+        
+        <!-- Attack -->
+        <td>
+          <form>
+            <input type = "number" value = "0" name = "atk" />
+          </form>
+        </td>
+        
+        <!-- Soul -->
+        <td>
+          <form>
+            <select name = "soul">
+              <option value = "none" selected> None </option>
+              <option value = "shadow"> Shadow </option>
+              <option value = "claws"> Claws </option>
+              <option value = "seduc"> Seductress </option>
+            </select>
+          </form>
+        </td>
+        
+        <!-- Critical -->
+        <td>
+          <form>
+            <input type = "checkbox" name = "crit" value = "on" />
+          </form>
+        </td>
+        
+        <!-- Critical Damage -->
+        <td>
+          <form>
+            <input type = "number" value = "150" name = "cdmg" />
+          </form>
+        </td>
+        
+        <!-- Atk/Dmg Buff -->
+        <td>
+          <form>
+            <select name = "buff">
+              <option value = "none" seletcted> None </option>
+              <option value = "bunny"> Bunny Dance<br />20% Atk </option>
+              <option value = "kamai"> Brotherly Bond<br />25% Atk </option>
+              <option value = "star"> Star<br />30% Dmg Inc. </option>
+            </select>
+          </form>
+        </td>
+        
+        <!-- Oitsuki Buff -->
+        <td>
+          <form>
+            <input type = "checkbox" name = "obuff" value = "on" />
+          </form>
+        </td>
+        
+        <!-- Death -->
+        <td>
+          <form>
+            <input type = "checkbox" name = "death" value = "on" />
+          </form>
+        </td>
+        
+        <!-- Bind -->
+        <td>
+          <form>
+            <input type = "checkbox" name = "bind" value = "on" />
+          </form>
+        </td>
+        
+        <!-- Total Atk -->
+        <td>
+          
+          
+        </td>
+        
+        <!-- Calculate! -->
+        <td>
+          
+          
+          
+          
+        </td>
+      </tr>
+    </table>
   </body>
   
 </html>
