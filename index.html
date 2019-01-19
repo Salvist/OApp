@@ -1,6 +1,6 @@
 <html>
   <head> 
-    <title> Onmyoji Calcula </title>
+    <title> Onmyoji Calculator </title>
     <base href = "https://salvist.github.io/OApp/" />
     <link rel="icon" type="image/png" href="seimei.png" />
     
@@ -11,8 +11,8 @@
         var atkBuff = 1.0
         <!--       none, bunny, kamai, oitsuki      -->
         var aBuff = [0.0, 0.2, 0.25, 0.2]
-        if (document.getElementById("buff").value = 1) atkBuff = atkBuff + aBuff[1]
-        if (document.getElementById("buff").value = 2) atkBuff = atkBuff + aBuff[2]
+        if (document.getElementById("buff").value = "1") atkBuff = atkBuff + aBuff[1]
+        if (document.getElementById("buff").value = "2") atkBuff = atkBuff + aBuff[2]
         if (Boolean(document.getElementById("oBuff").checked) = true) atkBuff = atkBuff + aBuff[3]
 
         var dmgBuff = 1.0
@@ -33,7 +33,7 @@
       }
       
       function test(){
-        document.getElementById("totalDamage").value = document.getElementById("totalDamage").value + 100
+        document.getElementById("totalDamage").value = Number(document.getElementById("totalDamage").value) + 100
       }
       
     </script>
