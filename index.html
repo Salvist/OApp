@@ -8,32 +8,32 @@
 
       
       function cal(){
-        var atkBuff = 1.0
+        var atkBuff = 1.0;
         <!--       none, bunny, kamai, oitsuki      -->
-        var aBuff = [0.0, 0.2, 0.25, 0.2]
-        if (document.getElementById("buff").value = "1") atkBuff = atkBuff + aBuff[1]
-        if (document.getElementById("buff").value = "2") atkBuff = atkBuff + aBuff[2]
-        if (Boolean(document.getElementById("oBuff").checked) = true) atkBuff = atkBuff + aBuff[3]
+        var aBuff = [0.0, 0.2, 0.25, 0.2];
+        if (document.getElementById("buff").value == "1") atkBuff = atkBuff + aBuff[1];
+        if (document.getElementById("buff").value == "2") atkBuff = atkBuff + aBuff[2];
+        if (Boolean(document.getElementById("oBuff").checked) == true) atkBuff = atkBuff + aBuff[3];
 
-        var dmgBuff = 1.0
-        if (document.getElementById("buff").value = "3") dmgBuff = dmgBuff + 0.3 <!--star-->
-        if (document.getElementById("soul").value = "1") dmgBuff = dmgBuff + 0.4 <!--shadow-->
+        var dmgBuff = 1.0;
+        if (document.getElementById("buff").value == "3") dmgBuff = dmgBuff + 0.3 <!--star-->
+        if (document.getElementById("soul").value == "1") dmgBuff = dmgBuff + 0.4 <!--shadow-->
         
         <!--        death, bind, ushi -->
-        var debuff = [0.3, 0.4, 0.15]
-        var dmgDebuff = 1.0
-        if(Boolean(document.getElementById("death").checked) = true) dmgDebuff = dmgDebuff + 0.3
-        if(Boolean(document.getElementById("bind").checked) = true) dmgDebuff = dmgDebuff + 0.4
+        var debuff = [0.3, 0.4, 0.15];
+        var dmgDebuff = 1.0;
+        if(Boolean(document.getElementById("death").checked) == true) dmgDebuff = dmgDebuff + 0.3;
+        if(Boolean(document.getElementById("bind").checked) == true) dmgDebuff = dmgDebuff + 0.4;
         
-        var skillMul = Number(document.getElementById("skillMultiplier").value)/100
+        var skillMul = Number(document.getElementById("skillMultiplier").value)/100;
         
-        let tAtk = Number(document.getElementById("atk").value) * atkBuff + Number(document.getElementById("bAtk").value)
-        var dmg = tAtk * skillMul * (1 + dmgBuff) * (1 + dmgDebuff)
-        document.getElemenyById("totalDamage").value = dmg
+        let tAtk = Number(document.getElementById("atk").value) * atkBuff + Number(document.getElementById("bAtk").value);
+        var dmg = tAtk * skillMul * (1 + dmgBuff) * (1 + dmgDebuff);
+        document.getElemenyById("totalDamage").value = dmg;
       }
       
       function test(){
-        document.getElementById("totalDamage").value = Number(document.getElementById("totalDamage").value) + 100
+        document.getElementById("totalDamage").value = Number(document.getElementById("totalDamage").value) + 100;
       }
       
     </script>
@@ -105,7 +105,7 @@
 
           <!-- Atk/Dmg Buff -->
           <td>
-            <select id = "buff">
+            <select name = "buff" id = "buff">
               <option value = "0" selected> None </option>
               <option value = "1"> Bunny Dance  20% Atk </option>
               <option value = "2"> Brotherly Bond 25% Atk </option>
