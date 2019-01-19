@@ -11,19 +11,19 @@
         var atkBuff = 1.0
         <!--       none, bunny, kamai, oitsuki      -->
         var aBuff = [0.0, 0.2, 0.25, 0.2]
-        if (document.getElementById("buff").value = 1) atkBuff += aBuff[1]
-        if (document.getElementById("buff").value = 2) atkBuff += aBuff[2]
-        if (document.getElementById("oBuff").checked = true) atkBuff += aBuff[3]
+        if (document.getElementById("buff").value = 1) atkBuff = atkBuff + aBuff[1]
+        if (document.getElementById("buff").value = 2) atkBuff = atkBuff + aBuff[2]
+        if (document.getElementById("oBuff").checked = true) atkBuff = atkBuff + aBuff[3]
 
         var dmgBuff = 1.0
-        if (document.getElementById("buff").value = 3) dmgBuff += 0.3 <!--star-->
-        if (document.getElementById("soul").value = 1) dmgBuff += 0.4 <!--shadow-->
+        if (document.getElementById("buff").value = 3) dmgBuff = dmgBuff + 0.3 <!--star-->
+        if (document.getElementById("soul").value = 1) dmgBuff = dmgBuff + 0.4 <!--shadow-->
         
         <!--        death, bind, ushi -->
         var debuff = [0.3, 0.4, 0.15]
         var dmgDebuff = 1.0
-        if(document.getElementById("death").checked = true) dmgDebuff += 0.3
-        if(document.getElementById("bind").checked = true) dmgDebuff += 0.4
+        if(document.getElementById("death").checked = true) dmgDebuff = dmgDebuff + 0.3
+        if(document.getElementById("bind").checked = true) dmgDebuff = dmgDebuff + 0.4
         
         var skillMul = document.getElementById("skillMultiplier").value
         
@@ -33,7 +33,7 @@
       }
       
       function test(){
-        document.getElementById("totalDamage").value += 100
+        document.getElementById("totalDamage").value = document.getElementById("totalDamage").value + 100
       }
       
     </script>
@@ -132,7 +132,7 @@
 
           <!-- Total Damage -->
           <td>
-            <input type = "number" id = "totalDamage" value = 0 disabled />
+            <input type = "number" id = "totalDamage" value = "0" disabled />
           </td>
 
           <!-- Calculate! -->
