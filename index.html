@@ -27,7 +27,7 @@
         
         let tAtk = Number(document.getElementById("atk").value) * atkBuff + Number(document.getElementById("bAtk").value);
         let def = Number(document.getElementById("defense").value);
-        var dmg = tAtk * skillMul * (300 / (300 + def)) * dmgBuff * (1 + dmgDebuff);
+        var dmg = tAtk * skillMul * (300 / (300 + def)) * dmgBuff * dmgDebuff;
         if(Boolean(document.getElementById("critical").checked) == true) dmg = dmg * Number(document.getElementById("cdmg")) / 100;
         
         document.getElementById("totalDamage").value = dmg.toFixed(2);
