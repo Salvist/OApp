@@ -1,6 +1,6 @@
 <html>
   <head> 
-    <title> Onmyoji Calculatorr </title>
+    <title> Onmyoji Calculator </title>
     <base href = "https://salvist.github.io/OApp/" />
     <link rel="icon" type="image/png" href="seimei.png" />
     
@@ -25,11 +25,11 @@
         if(Boolean(document.getElementById("death").checked) == true) dmgDebuff = dmgDebuff + debuff[1];
         if(Boolean(document.getElementById("bind").checked) == true) dmgDebuff = dmgDebuff + debuff[2];
         
-        var skillMul = Number(document.getElementById("skillMultiplier").value);
+        var skillMul = Number(document.getElementById("skillMultiplier").value)/100;
         
         let tAtk = Number(document.getElementById("atk").value) * atkBuff + Number(document.getElementById("bAtk").value);
-        var dmg = tAtk * skillMul * (1 + dmgBuff) * (1 + dmgDebuff);
-        document.getElemenyById("totalDamage").value = dmg;
+        var dmg = tAtk * skillMul * dmgBuff * (1 + dmgDebuff);
+        document.getElementById("totalDamage").value = dmg;
       }
       
       function test(){
@@ -80,7 +80,7 @@
         
           <!-- Skill Percentage -->
           <td>
-            <input type = "number" value = "0" id = "skillMultiplier" />
+            <input type = "number" value = "100" id = "skillMultiplier" />
           </td>
 
           <!-- Soul -->
@@ -132,7 +132,7 @@
 
           <!-- Total Damage -->
           <td>
-            <input type = "number" id = "totalDamage" value = "0" disabled />
+            <input type = "text" id = "totalDamage" value = "0" disabled />
           </td>
 
           <!-- Calculate! -->
