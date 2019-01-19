@@ -5,8 +5,6 @@
     <link rel="icon" type="image/png" href="seimei.png" />
     
     <script>
-
-      
       function cal(){
         var atkBuff = 1.0;
         <!--       none, bunny, kamai, oitsuki      -->
@@ -28,14 +26,11 @@
         var skillMul = Number(document.getElementById("skillMultiplier").value)/100;
         
         let tAtk = Number(document.getElementById("atk").value) * atkBuff + Number(document.getElementById("bAtk").value);
-        var dmg = tAtk * skillMul * dmgBuff * (1 + dmgDebuff);
+        let def = Number(document.getElementById("defense").value);
+        
+        var dmg = tAtk * skillMul * (300 / (300 + def)) * dmgBuff * (1 + dmgDebuff);
         document.getElementById("totalDamage").value = dmg;
       }
-      
-      function test(){
-        document.getElementById("totalDamage").value = Number(document.getElementById("totalDamage").value) + 100;
-      }
-      
     </script>
   </head>
   
@@ -49,6 +44,13 @@
     
     <!-- label on top -->
     <table>
+      
+      <tr>
+        <td>
+          Defense: <input type = "number" value = "0" id = "defense" />
+        </td>
+      </tr>
+      
       <tr>
         <td>Attack</td>
         <td>Bonus Attack</td>
@@ -64,7 +66,7 @@
         <td>Calculate!</td>
       </tr>
       
-      <form name = "abc">
+      <form>
         <tr>
           
           <!-- Attack -->
