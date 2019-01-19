@@ -27,9 +27,10 @@
         
         let tAtk = Number(document.getElementById("atk").value) * atkBuff + Number(document.getElementById("bAtk").value);
         let def = Number(document.getElementById("defense").value);
-        
         var dmg = tAtk * skillMul * (300 / (300 + def)) * dmgBuff * (1 + dmgDebuff);
-        document.getElementById("totalDamage").value = dmg;
+        if(Boolean(document.getElementById("critial").checked) == true) dmg = dmg * Number(document.getElementById("cdmg") / 100;
+        
+        document.getElementById("totalDamage").value = dmg.toFixed(2);
       }
     </script>
   </head>
@@ -97,7 +98,7 @@
 
           <!-- Critical -->
           <td>
-            <input type = "checkbox" id = "crit" value = "on" />
+            <input type = "checkbox" id = "critical" />
           </td>
 
           <!-- Critical Damage -->
