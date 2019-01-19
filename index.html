@@ -11,25 +11,25 @@
         var atkBuff = 1.0
         <!--       none, bunny, kamai, oitsuki      -->
         var aBuff = [0.0, 0.2, 0.25, 0.2]
-        if (document.getElementByName("buff").value = 1) atkBuff += aBuff[1]
-        if (document.getElementByName("buff").value = 2) atkBuff += aBuff[2]
-        if (document.getElementByName("oBuff").checked) atkBuff += aBuff[3]
+        if (document.getElementById("buff").value = 1) atkBuff += aBuff[1]
+        if (document.getElementById("buff").value = 2) atkBuff += aBuff[2]
+        if (document.getElementById("oBuff").checked) atkBuff += aBuff[3]
 
         var dmgBuff = 1.0
-        if (document.getElementByName("buff").value = 3) dmgBuff += 0.3 <!--star-->
-        if (document.getElementByName("soul").value = 1) dmgBuff += 0.4 <!--shadow-->
+        if (document.getElementById("buff").value = 3) dmgBuff += 0.3 <!--star-->
+        if (document.getElementById("soul").value = 1) dmgBuff += 0.4 <!--shadow-->
         
         <!--        death, bind, ushi -->
         var debuff = [0.3, 0.4, 0.15]
         var dmgDebuff = 1.0
-        if(document.getElementByName("death").checked) dmgDebuff += 0.3
-        if(document.getElementByName("bind").checked) dmgDebuff += 0.4
+        if(document.getElementById("death").checked) dmgDebuff += 0.3
+        if(document.getElementById("bind").checked) dmgDebuff += 0.4
         
-        var skillMul = document.getElementByName("skillMultiplier").value
+        var skillMul = document.getElementById("skillMultiplier").value
         
-        let tAtk = document.getElementByName("atk").value * atkBuff + document.getElementByName("bAtk").value
+        let tAtk = document.getElementById("atk").value * atkBuff + document.getElementById("bAtk").value
         var dmg = tAtk * skillMul * (1 + dmgBuff) * (1 + dmgDebuff)
-        document.getElemenyByName("totalDamage").value = dmg
+        document.getElemenyById("totalDamage").value = dmg
       }
       
     </script>
@@ -65,23 +65,23 @@
           
           <!-- Attack -->
           <td>
-            <input type = "number" value = "0" name = "atk" />
+            <input type = "number" value = "0" id = "atk" />
           </td>
           
           <!-- Bonus Attack -->
            <td>
-             <input type = "number" value = "0" name = "bAtk" />
+             <input type = "number" value = "0" id = "bAtk" />
           </td>
             
         
           <!-- Skill Percentage -->
           <td>
-            <input type = "number" value = "0" name = "skillMultiplier" />
+            <input type = "number" value = "0" id = "skillMultiplier" />
           </td>
 
           <!-- Soul -->
           <td>
-            <select name = "soul">
+            <select Id = "soul">
               <option value = "0" selected> None </option>
               <option value = "1"> Shadow </option>
               <option value = "2"> Claws </option>
@@ -91,17 +91,17 @@
 
           <!-- Critical -->
           <td>
-            <input type = "checkbox" name = "crit" value = "on" />
+            <input type = "checkbox" id = "crit" value = "on" />
           </td>
 
           <!-- Critical Damage -->
           <td>
-            <input type = "number" value = "150" name = "cdmg" />
+            <input type = "number" value = "150" id = "cdmg" />
           </td>
 
           <!-- Atk/Dmg Buff -->
           <td>
-            <select name = "buff">
+            <select id = "buff">
               <option value = "0" selected> None </option>
               <option value = "1"> Bunny Dance  20% Atk </option>
               <option value = "2"> Brotherly Bond 25% Atk </option>
@@ -111,24 +111,24 @@
 
           <!-- Oitsuki Buff -->
           <td>
-            <input type = "checkbox" name = "oBuff" />
+            <input type = "checkbox" id = "oBuff" />
           </td>
 
           <!-- Death -->
           <td>
-              <input type = "checkbox" name = "death" />
+              <input type = "checkbox" id = "death" />
           </td>
 
           <!-- Bind -->
           <td>
             <form>
-              <input type = "checkbox" name = "bind" />
+              <input type = "checkbox" id = "bind" />
             </form>
           </td>
 
           <!-- Total Damage -->
           <td>
-            <input type = "number" name = "totalDamage" value = "0" disabled />
+            <input type = "number" id = "totalDamage" value = "0" disabled />
           </td>
 
           <!-- Calculate! -->
