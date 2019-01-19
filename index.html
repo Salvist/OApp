@@ -13,7 +13,7 @@
         var aBuff = [0.0, 0.2, 0.25, 0.2]
         if (document.getElementById("buff").value = 1) atkBuff += aBuff[1]
         if (document.getElementById("buff").value = 2) atkBuff += aBuff[2]
-        if (document.getElementById("oBuff").checked) atkBuff += aBuff[3]
+        if (document.getElementById("oBuff").checked = true) atkBuff += aBuff[3]
 
         var dmgBuff = 1.0
         if (document.getElementById("buff").value = 3) dmgBuff += 0.3 <!--star-->
@@ -22,14 +22,18 @@
         <!--        death, bind, ushi -->
         var debuff = [0.3, 0.4, 0.15]
         var dmgDebuff = 1.0
-        if(document.getElementById("death").checked) dmgDebuff += 0.3
-        if(document.getElementById("bind").checked) dmgDebuff += 0.4
+        if(document.getElementById("death").checked = true) dmgDebuff += 0.3
+        if(document.getElementById("bind").checked = true) dmgDebuff += 0.4
         
         var skillMul = document.getElementById("skillMultiplier").value
         
         let tAtk = document.getElementById("atk").value * atkBuff + document.getElementById("bAtk").value
         var dmg = tAtk * skillMul * (1 + dmgBuff) * (1 + dmgDebuff)
         document.getElemenyById("totalDamage").value = dmg
+      }
+      
+      function test(){
+        document.getElementById("totalDamage").value = 100
       }
       
     </script>
@@ -135,6 +139,11 @@
           <td>
             <input type = "button" value = "calculate" onclick = "cal()"/>
           </td>
+          
+          <td>
+            <input type = "button" value = "test" onclick = "test()" />
+          </td>
+          
         </tr>
       </form>
     </table>
