@@ -3,6 +3,36 @@
     <title> Onmyoji Calculator </title>
     <base href = "https://salvist.github.io/OApp/" />
     <link rel="icon" type="image/png" href="seimei.png" />
+    
+    <script>
+
+      
+      function cal(){
+        var atkBuff = 1.0
+        <!--       none, bunny, kamai, oitsuki      -->
+        var aBuff = [0.0, 0.2, 0.25, 0.2]
+        if (document.getElementByName("buff").value = 1) atkBuff += aBuff[1]
+        if (document.getElementByName("buff").value = 2) atkBuff += aBuff[2]
+        if (document.getElementByName("oBuff").checked) atkBuff += aBuff[3]
+
+        var dmgBuff = 1.0
+        if (document.getElementByName("buff").value = 3) dmgBuff += 0.3 <!--star-->
+        if (document.getElementByName("soul").value = 1) dmgBuff += 0.4 <!--shadow-->
+        
+        <!--        death, bind, ushi -->
+        var debuff = [0.3, 0.4, 0.15]
+        var dmgDebuff = 1.0
+        if(document.getElementByName("death").checked) dmgDebuff += 0.3
+        if(document.getElementByName("bind").checked) dmgDebuff += 0.4
+        
+        var skillMul = document.getElementByName("skillMultiplier").value
+        
+        let tAtk = document.getElementByName("atk").value * atkBuff + document.getElementByName("bAtk").value
+        var dmg = tAtk * skillMul * (1 + dmgBuff) * (1 + dmgDebuff)
+        document.getElemenyByName("totalDamage").value = dmg
+      }
+      
+    </script>
   </head>
   
   <body>
@@ -16,8 +46,9 @@
     <!-- label on top -->
     <table>
       <tr>
-        <td>Skill %</td>
         <td>Attack</td>
+        <td>Bonus Attack</td>
+        <td>Skill %</td>
         <td>Soul</td> 
         <td>Critial</td>
         <td>Critical<br />Damage</td>
@@ -31,23 +62,30 @@
       
       <form name = "abc">
         <tr>
-          <!-- Skill Percentage -->
-          <td>
-            <input type = "number" value = "0" name = "skill" />
-          </td>
-
+          
           <!-- Attack -->
           <td>
             <input type = "number" value = "0" name = "atk" />
+          </td>
+          
+          <!-- Bonus Attack -->
+           <td>
+             <input type = "number" value = "0" name = "bAtk" />
+          </td>
+            
+        
+          <!-- Skill Percentage -->
+          <td>
+            <input type = "number" value = "0" name = "skillMultiplier" />
           </td>
 
           <!-- Soul -->
           <td>
             <select name = "soul">
-              <option value = "none" selected> None </option>
-              <option value = "shadow"> Shadow </option>
-              <option value = "claws"> Claws </option>
-              <option value = "seduc"> Seductress </option>
+              <option value = "0" selected> None </option>
+              <option value = "1"> Shadow </option>
+              <option value = "2"> Claws </option>
+              <option value = "3"> Seductress </option>
             </select>
           </td>
 
@@ -64,39 +102,38 @@
           <!-- Atk/Dmg Buff -->
           <td>
             <select name = "buff">
-              <option value = "none" seletcted> None </option>
-              <option value = "bunny"> Bunny Dance<br />20% Atk </option>
-              <option value = "kamai"> Brotherly Bond<br />25% Atk </option>
-              <option value = "star"> Star<br />30% Dmg Inc. </option>
+              <option value = "0" selected> None </option>
+              <option value = "1"> Bunny Dance  20% Atk </option>
+              <option value = "2"> Brotherly Bond 25% Atk </option>
+              <option value = "3"> Star  30% Dmg Inc. </option>
             </select>
           </td>
 
           <!-- Oitsuki Buff -->
           <td>
-            <input type = "checkbox" name = "obuff" value = "on" />
+            <input type = "checkbox" name = "oBuff" />
           </td>
 
           <!-- Death -->
           <td>
-              <input type = "checkbox" name = "death" value = "on" />
+              <input type = "checkbox" name = "death" />
           </td>
 
           <!-- Bind -->
           <td>
             <form>
-              <input type = "checkbox" name = "bind" value = "on" />
+              <input type = "checkbox" name = "bind" />
             </form>
           </td>
 
           <!-- Total Damage -->
           <td>
-            <input type = "text" name = "display" id = "display" disabled />
+            <input type = "number" name = "totalDamage" value = "0" disabled />
           </td>
 
           <!-- Calculate! -->
           <td>
-            <input type = "button" name = "calc" value = "Calculate!"
-                   />
+            <input type = "button" value = "calculate" onclick = "cal()"/>
           </td>
         </tr>
       </form>
