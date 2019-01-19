@@ -14,12 +14,12 @@
         if (Boolean(document.getElementById("oBuff").checked) == true) atkBuff = atkBuff + aBuff[3];
 
         var dmgBuff = 1.0;
-        if (document.getElementById("buff").value == "3") dmgBuff = dmgBuff + 0.3 <!--star-->
-        if (document.getElementById("soul").value == "1") dmgBuff = dmgBuff + 0.4 <!--shadow-->
+        if (document.getElementById("buff").value == "3") dmgBuff = dmgBuff * 1.3 <!--star-->
+        if (document.getElementById("soul").value == "1") dmgBuff = dmgBuff * 1.4 <!--shadow-->
         
         <!--        none, death, bind, ushi -->
         var debuff = [0.0, 0.3, 0.4, 0.15];
-        var dmgDebuff = 1.0;
+        var dmgDebuff = 0.0;
         if(Boolean(document.getElementById("death").checked) == true) dmgDebuff = dmgDebuff + debuff[1];
         if(Boolean(document.getElementById("bind").checked) == true) dmgDebuff = dmgDebuff + debuff[2];
         
@@ -27,7 +27,7 @@
         
         let tAtk = Number(document.getElementById("atk").value) * atkBuff + Number(document.getElementById("bAtk").value);
         let def = Number(document.getElementById("defense").value);
-        var dmg = tAtk * skillMul * (300 / (300 + def)) * dmgBuff * dmgDebuff;
+        var dmg = tAtk * skillMul * (300 / (300 + def)) * dmgBuff * (1 + dmgDebuff);
         if(Boolean(document.getElementById("critical").checked) == true) dmg = dmg * Number(document.getElementById("cdmg").value) / 100;
         
         document.getElementById("totalDamage").value = dmg.toFixed(2);
