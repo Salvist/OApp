@@ -1,6 +1,6 @@
 <html>
   <head> 
-    <title> Onmyoji Calculatos </title>
+    <title> Onmyoji Calculatorr </title>
     <base href = "https://salvist.github.io/OApp/" />
     <link rel="icon" type="image/png" href="seimei.png" />
     
@@ -19,13 +19,13 @@
         if (document.getElementById("buff").value == "3") dmgBuff = dmgBuff + 0.3 <!--star-->
         if (document.getElementById("soul").value == "1") dmgBuff = dmgBuff + 0.4 <!--shadow-->
         
-        <!--        death, bind, ushi -->
-        var debuff = [0.3, 0.4, 0.15];
+        <!--        none, death, bind, ushi -->
+        var debuff = [0.0, 0.3, 0.4, 0.15];
         var dmgDebuff = 1.0;
-        if(Boolean(document.getElementById("death").checked) == true) dmgDebuff = dmgDebuff + 0.3;
-        if(Boolean(document.getElementById("bind").checked) == true) dmgDebuff = dmgDebuff + 0.4;
+        if(Boolean(document.getElementById("death").checked) == true) dmgDebuff = dmgDebuff + debuff[1];
+        if(Boolean(document.getElementById("bind").checked) == true) dmgDebuff = dmgDebuff + debuff[2];
         
-        var skillMul = Number(document.getElementById("skillMultiplier").value)/100;
+        var skillMul = Number(document.getElementById("skillMultiplier").value);
         
         let tAtk = Number(document.getElementById("atk").value) * atkBuff + Number(document.getElementById("bAtk").value);
         var dmg = tAtk * skillMul * (1 + dmgBuff) * (1 + dmgDebuff);
