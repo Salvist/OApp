@@ -39,7 +39,7 @@
           tempdef = def * 45 / 100
           dmg1 = tAtk * skillMul * (300 / (300 + tempdef)) * dmgBuff * (1 + dmgDebuff);
           if(Boolean(document.getElementById("critical").checked) == true) dmg1 = dmg1 * Number(document.getElementById("cdmg").value) / 100;
-          document.getElementById("totalDamage").value = dmg.toFixed(2) + "~" + dmg.toFixed(2);
+          document.getElementById("totalDamage").value = dmg.toFixed(2) + " ~ " + dmg1.toFixed(2);
         } else {
           document.getElementById("totalDamage").value = dmg.toFixed(2);
         }
