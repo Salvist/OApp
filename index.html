@@ -28,9 +28,21 @@
         let tAtk = Number(document.getElementById("atk").value) * atkBuff + Number(document.getElementById("bAtk").value);
         let def = Number(document.getElementById("defense").value);
         var dmg = tAtk * skillMul * (300 / (300 + def)) * dmgBuff * (1 + dmgDebuff);
+        
+        var tempdef;
+        var dmg1;
+        
+        
         if(Boolean(document.getElementById("critical").checked) == true) dmg = dmg * Number(document.getElementById("cdmg").value) / 100;
         
-        document.getElementById("totalDamage").value = dmg.toFixed(2);
+        if(document.getElementById("soul").value == "2"){
+          tempdef = def * 45 / 100
+          dmg1 = tAtk * skillMul * (300 / (300 + tempdef)) * dmgBuff * (1 + dmgDebuff);
+          if(Boolean(document.getElementById("critical").checked) == true) dmg1 = dmg1 * Number(document.getElementById("cdmg").value) / 100;
+          document.getElementById("totalDamage").value = dmg.toFixed(2) + "~" + dmg.toFixed(2);
+        } else if(document.getElement{
+          document.getElementById("totalDamage").value = dmg.toFixed(2);
+        }
       }
     </script>
   </head>
