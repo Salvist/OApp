@@ -4,10 +4,10 @@
     <base href = "https://salvist.github.io/OApp/" />
     <link rel="icon" type="image/png" href="seimei.png" />
     
-    <script> <!-- Calculation Function (JavaScript) -->
+    <script> <!-- Calculation Function JavaScript -->
       function cal(){
         var atkBuff = 1.0;
-        <!--       none, bunny, kamai, oitsuki      -->
+        <!--       none, bunny, kamai, oitsuki      -->;
         var aBuff = [0.0, 0.2, 0.25, 0.2];
         if (document.getElementById("buff").value == "1") atkBuff = atkBuff + aBuff[1];
         if (document.getElementById("buff").value == "2") atkBuff = atkBuff + aBuff[2];
@@ -17,7 +17,7 @@
         if (document.getElementById("buff").value == "3") dmgBuff = dmgBuff * 1.3 <!--star-->
         if (document.getElementById("soul").value == "1") dmgBuff = dmgBuff * 1.4 <!--shadow-->
         
-        <!--        none, death, bind, ushi -->
+        <!--        none, death, bind, ushi -->;
         var debuff = [0.0, 0.3, 0.4, 0.15];
         var dmgDebuff = 0.0;
         if(Boolean(document.getElementById("death").checked) == true) dmgDebuff = dmgDebuff + debuff[1];
@@ -45,9 +45,11 @@
         }
       }
     </script>
-    <script> <!-- Duplicating -->
-        var FormData = new FormData();
-        
+    <script>
+      var formData = new FormData(document.getElementById("data1"));
+      for(var pair of formData.entries()) {
+        console.log(pair[0]+ ', '+ pair[1]); 
+      }
     </script>
   </head>
   
@@ -83,7 +85,7 @@
         <td>Calculate!</td>
       </tr>
       
-      <form>
+      <form id = "data1">
         <tr>
           <td> <!-- Attack -->
             <input type = "number" value = "0" id = "atk" />
@@ -128,105 +130,8 @@
           <td> <!-- Total Damage -->
             <input type = "text" id = "totalDamage" value = "0" disabled />
           </td>
-          <td> <!-- Calculate! -->
-            <input type = "button" value = "calculate" onclick = "cal()"/>
-          </td>          
-        </tr>
-      </form>
-            <form>
-        <tr>
-          <td> <!-- Attack -->
-            <input type = "number" value = "0" id = "atk" />
-          </td> 
-           <td> <!-- Bonus Attack -->
-             <input type = "number" value = "0" id = "bAtk" />
-          </td>
-          <td> <!-- Skill Percentage -->
-            <input type = "number" value = "100" id = "skillMultiplier" />
-          </td>
-          <td> <!-- Soul -->
-            <select Id = "soul">
-              <option value = "0" selected> None </option>
-              <option value = "1"> Shadow </option>
-              <option value = "2"> Claws </option>
-              <option value = "3"> Seductress </option>
-            </select>
-          </td>
-          <td> <!-- Critical -->
-            <input type = "checkbox" id = "critical" />
-          </td>
-          <td> <!-- Critical Damage -->
-            <input type = "number" value = "150" id = "cdmg" />
-          </td>
-          <td> <!-- Atk/Dmg Buff -->
-            <select name = "buff" id = "buff">
-              <option value = "0" selected> None </option>
-              <option value = "1"> Bunny Dance  20% Atk </option>
-              <option value = "2"> Brotherly Bond 25% Atk </option>
-              <option value = "3"> Star  30% Dmg Inc. </option>
-            </select>
-          </td>
-          <td> <!-- Oitsuki Buff -->
-            <input type = "checkbox" id = "oBuff" />
-          </td> 
-          <td> <!-- Death -->
-            <input type = "checkbox" id = "death" />
-          </td>       
-          <td> <!-- Bind -->
-            <input type = "checkbox" id = "bind" />
-          </td>
-          <td> <!-- Total Damage -->
-            <input type = "text" id = "totalDamage" value = "0" disabled />
-          </td>
-          <td> <!-- Calculate! -->
-            <input type = "button" value = "calculate" onclick = "cal()"/>
-          </td>          
-        </tr>
-      </form>
-            <form>
-        <tr>
-          <td> <!-- Attack -->
-            <input type = "number" value = "0" id = "atk" />
-          </td> 
-           <td> <!-- Bonus Attack -->
-             <input type = "number" value = "0" id = "bAtk" />
-          </td>
-          <td> <!-- Skill Percentage -->
-            <input type = "number" value = "100" id = "skillMultiplier" />
-          </td>
-          <td> <!-- Soul -->
-            <select Id = "soul">
-              <option value = "0" selected> None </option>
-              <option value = "1"> Shadow </option>
-              <option value = "2"> Claws </option>
-              <option value = "3"> Seductress </option>
-            </select>
-          </td>
-          <td> <!-- Critical -->
-            <input type = "checkbox" id = "critical" />
-          </td>
-          <td> <!-- Critical Damage -->
-            <input type = "number" value = "150" id = "cdmg" />
-          </td>
-          <td> <!-- Atk/Dmg Buff -->
-            <select name = "buff" id = "buff">
-              <option value = "0" selected> None </option>
-              <option value = "1"> Bunny Dance  20% Atk </option>
-              <option value = "2"> Brotherly Bond 25% Atk </option>
-              <option value = "3"> Star  30% Dmg Inc. </option>
-            </select>
-          </td>
-          <td> <!-- Oitsuki Buff -->
-            <input type = "checkbox" id = "oBuff" />
-          </td> 
-          <td> <!-- Death -->
-            <input type = "checkbox" id = "death" />
-          </td>       
-          <td> <!-- Bind -->
-            <input type = "checkbox" id = "bind" />
-          </td>
-          <td> <!-- Total Damage -->
-            <input type = "text" id = "totalDamage" value = "0" disabled />
+          <td>
+            <input type = "submit" />
           </td>
           <td> <!-- Calculate! -->
             <input type = "button" value = "calculate" onclick = "cal()"/>
