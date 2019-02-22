@@ -4,7 +4,12 @@
     <base href = "https://salvist.github.io/OApp/" />
     <link rel="icon" type="image/png" href="seimei.png" />
     
-    <script> <!-- Calculation Function JavaScript -->
+    <script> <!-- Calculation Function JavaScript -->;
+      var formData = new FormData(document.getElementById("data1"));
+      for(var pair of formData.entries()) {
+        console.log(pair[0]+ ', '+ pair[1]); 
+      }
+        
       function cal(){
         var atkBuff = 1.0;
         <!--       none, bunny, kamai, oitsuki      -->;
@@ -43,12 +48,6 @@
         } else {
           document.getElementById("totalDamage").value = dmg.toFixed(2);
         }
-      }
-    </script>
-    <script>
-      var formData = new FormData(document.getElementById("data1"));
-      for(var pair of formData.entries()) {
-        console.log(pair[0]+ ', '+ pair[1]); 
       }
     </script>
   </head>
