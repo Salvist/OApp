@@ -100,13 +100,13 @@
           tempdef = def * 45 / 100
           dmg1 = tAtk * skillMul * (300 / (300 + tempdef)) * dmgBuff * (1 + dmgDebuff);
           if(Boolean(critH) == true) dmg1 = dmg1 * Number(cdmgH) / 100;
-          tDmgH = dmg.toFixed(2) + " OR " + dmg1.toFixed(2);
+          tDmg = dmg.toFixed(2) + " OR " + dmg1.toFixed(2);
         } else if(soulH == "3"){
           seduc1 = tAtk * 1.2;
           seduc2 = tAtk * 1.2 * 5;
-          tDmgH = dmg.toFixed(2) + " + " + seduc1 + " ~ " + seduc2;
+          tDmg = dmg.toFixed(2) + " + " + seduc1 + " ~ " + seduc2;
         } else {
-          tDmgH = dmg.toFixed(2);
+          tDmg = dmg.toFixed(2);
         }
         
         
