@@ -7,7 +7,7 @@
     <script> //Calculation Function JavaScript 
       function cal(data){
         //Data Handler
-        var buffH, oBuffH, dmgBuffH, dmgDebuffH, sMulH, atkH, bAtkH, critH, cdmgH, soulH, tDmgH, deathH, bindH;
+        let buffH, oBuffH, dmgBuffH, dmgDebuffH, sMulH, atkH, bAtkH, critH, cdmgH, soulH, deathH, bindH;
         if(data == 1) {
           buffH = document.getElementById("buff1").value;
           oBuffH = document.getElementById("oBuff1").checked;
@@ -19,7 +19,6 @@
           bAtkH = document.getElementById("bAtk1").value;
           critH = document.getElementById("critical1").checked;
           cdmgH = document.getElementById("cdmg1").value;
-          tDmgH = document.getElementById("totalDamage1").value;
         } else if(data == 2) {
           buffH = document.getElementById("buff2").value;
           oBuffH = document.getElementById("oBuff2").checked;
@@ -31,7 +30,6 @@
           bAtkH = document.getElementById("bAtk2").value;
           critH = document.getElementById("critical2").checked;
           cdmgH = document.getElementById("cdmg2").value;
-          tDmgH = document.getElementById("totalDamage2").value;
         } else if(data == 3){
           buffH = document.getElementById("buff3").value;
           oBuffH = document.getElementById("oBuff3").checked;
@@ -43,7 +41,6 @@
           bAtkH = document.getElementById("bAtk3").value;
           critH = document.getElementById("critical3").checked;
           cdmgH = document.getElementById("cdmg3").value;
-          tDmgH = document.getElementById("totalDamage3").value;
         } else if(data == 4){
           buffH = document.getElementById("buff4").value;
           oBuffH = document.getElementById("oBuff4").checked;
@@ -55,7 +52,6 @@
           bAtkH = document.getElementById("bAtk4").value;
           critH = document.getElementById("critical4").checked;
           cdmgH = document.getElementById("cdmg4").value;
-          tDmgH = document.getElementById("totalDamage4").value;
         }
         
         console.log("buff = " + buffH);
@@ -96,6 +92,7 @@
         var tempdef;
         var dmg1;
         var seduc1, seduc2;
+        var tDmg; 
         
         if(Boolean(critH) == true) dmg = dmg * Number(cdmgH) / 100;
         
@@ -110,6 +107,17 @@
           tDmgH = dmg.toFixed(2) + " + " + seduc1 + " ~ " + seduc2;
         } else {
           tDmgH = dmg.toFixed(2);
+        }
+        
+        
+        if(data == 1){
+          document.getElementById("totalDamage1").value = tDmg;
+        } else if (data == 2){
+          document.getElementById("totalDamage2").value = tDmg;
+        } else if (data == 3){
+          document.getElementById("totalDamage3").value = tDmg;
+        } else if (data == 4){
+          document.getElementById("totalDamage4").value = tDmg;
         }
       }
     </script>
