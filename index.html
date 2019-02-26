@@ -32,18 +32,43 @@
           critH = document.getElementById("critical2").checked;
           cdmgH = document.getElementById("cdmg2").value;
           tDmgH = document.getElementById("totalDamage2").value;
+        } else if(data == 3){
+          buffH = document.getElementById("buff3").value;
+          oBuffH = document.getElementById("oBuff3").checked;
+          soulH = document.getElementById("soul3").value;
+          deathH = document.getElementById("death3").checked;
+          bindH = document.getElementById("bind3").checked;
+          sMulH = document.getElementById("skillMultiplier3").value;
+          atkH = document.getElementById("atk3").value;
+          bAtkH = document.getElementById("bAtk3").value;
+          critH = document.getElementById("critical3").checked;
+          cdmgH = document.getElementById("cdmg3").value;
+          tDmgH = document.getElementById("totalDamage3").value;
+        } else if(data == 4){
+          buffH = document.getElementById("buff4").value;
+          oBuffH = document.getElementById("oBuff4").checked;
+          soulH = document.getElementById("soul4").value;
+          deathH = document.getElementById("death4").checked;
+          bindH = document.getElementById("bind4").checked;
+          sMulH = document.getElementById("skillMultiplier4").value;
+          atkH = document.getElementById("atk4").value;
+          bAtkH = document.getElementById("bAtk4").value;
+          critH = document.getElementById("critical4").checked;
+          cdmgH = document.getElementById("cdmg4").value;
+          tDmgH = document.getElementById("totalDamage4").value;
         }
-        console.log(buffH);
-        console.log(oBuffH);
+        
+        console.log("buff = " + buffH);
+        console.log("oBuff = " + oBuffH);
         console.log(soulH);
         console.log(deathH);
         console.log(deathH);
         console.log(bindH);
         console.log(sMulH);
-        console.log(atkH);
-        console.log(bAtkH);
-        console.log(critH);
-        console.log(cdmgH);
+        console.log("atk = " + atkH);
+        console.log("bAtk = " + bAtkH);
+        console.log("crit = " + critH);
+        console.log("cdmg = " + cdmgH);
         
         var atkBuff = 1.0;
         //         none, bunny, kamai, oitsuki
@@ -70,30 +95,22 @@
         
         var tempdef;
         var dmg1;
+        var seduc1, seduc2;
         
         if(Boolean(critH) == true) dmg = dmg * Number(cdmgH) / 100;
         
-        if(data === 1){
-          if(soulH === "2"){
-            tempdef = def * 45 / 100
-            dmg1 = tAtk * skillMul * (300 / (300 + tempdef)) * dmgBuff * (1 + dmgDebuff);
-            if(Boolean(critH) === true) dmg1 = dmg1 * Number(cdmgH) / 100;
-            document.getElementById("totalDamage1").value = dmg.toFixed(2) + " OR " + dmg1.toFixed(2);
-          } else {
-            document.getElementById("totalDamage1").value = dmg.toFixed(2);
-          }
+        if(soulH == "2"){
+          tempdef = def * 45 / 100
+          dmg1 = tAtk * skillMul * (300 / (300 + tempdef)) * dmgBuff * (1 + dmgDebuff);
+          if(Boolean(critH) == true) dmg1 = dmg1 * Number(cdmgH) / 100;
+          tDmgH = dmg.toFixed(2) + " OR " + dmg1.toFixed(2);
+        } else if(soulH == "3"){
+          seduc1 = tAtk * 1.2;
+          seduc2 = tAtk * 1.2 * 5;
+          tDmgH = dmg.toFixed(2) + " + " + seduc 1 + " ~ " + seduc2;
+        } else {
+          tDmgH = dmg.toFixed(2);
         }
-        if(data === 2){
-          if(soulH === "2"){
-            tempdef = def * 45 / 100
-            dmg1 = tAtk * skillMul * (300 / (300 + tempdef)) * dmgBuff * (1 + dmgDebuff);
-            if(Boolean(critH) == true) dmg1 = dmg1 * Number(cdmgH) / 100;
-            document.getElementById("totalDamage2").value = dmg.toFixed(2) + " OR " + dmg1.toFixed(2);
-          } else {
-            document.getElementById("totalDamage2").value = dmg.toFixed(2);
-          }
-        }
-        
       }
     </script>
   </head>
@@ -230,6 +247,110 @@
           </td>
           <td> <!-- Calculate! -->
             <input type = "button" value = "calculate" onclick = "cal(2)"/>
+          </td>          
+        </tr>
+      </form>
+      
+      <!-- Data 3 -->
+      <form id = "data3">
+        <tr>
+          <td> <!-- Attack -->
+            <input type = "number" value = "0" id = "atk3" />
+          </td> 
+           <td> <!-- Bonus Attack -->
+             <input type = "number" value = "0" id = "bAtk3" />
+          </td>
+          <td> <!-- Skill Percentage -->
+            <input type = "number" value = "100" id = "skillMultiplier3" />
+          </td>
+          <td> <!-- Soul -->
+            <select Id = "soul3">
+              <option value = "0" selected> None </option>
+              <option value = "1"> Shadow </option>
+              <option value = "2"> Claws </option>
+              <option value = "3"> Seductress </option>
+            </select>
+          </td>
+          <td> <!-- Critical -->
+            <input type = "checkbox" id = "critical3" />
+          </td>
+          <td> <!-- Critical Damage -->
+            <input type = "number" value = "150" id = "cdmg3" />
+          </td>
+          <td> <!-- Atk/Dmg Buff -->
+            <select name = "buff" id = "buff3">
+              <option value = "0" selected> None </option>
+              <option value = "1"> Bunny Dance  20% Atk </option>
+              <option value = "2"> Brotherly Bond 25% Atk </option>
+              <option value = "3"> Star  30% Dmg Inc. </option>
+            </select>
+          </td>
+          <td> <!-- Oitsuki Buff -->
+            <input type = "checkbox" id = "oBuff3" />
+          </td> 
+          <td> <!-- Death -->
+            <input type = "checkbox" id = "death3" />
+          </td>       
+          <td> <!-- Bind -->
+            <input type = "checkbox" id = "bind3" />
+          </td>
+          <td> <!-- Total Damage -->
+            <input type = "text" id = "totalDamage3" value = "0" disabled />
+          </td>
+          <td> <!-- Calculate! -->
+            <input type = "button" value = "calculate" onclick = "cal(3)"/>
+          </td>          
+        </tr>
+      </form>
+      
+      <!-- Data 2 -->
+      <form id = "data4">
+        <tr>
+          <td> <!-- Attack -->
+            <input type = "number" value = "0" id = "atk4" />
+          </td> 
+           <td> <!-- Bonus Attack -->
+             <input type = "number" value = "0" id = "bAtk4" />
+          </td>
+          <td> <!-- Skill Percentage -->
+            <input type = "number" value = "100" id = "skillMultiplier4" />
+          </td>
+          <td> <!-- Soul -->
+            <select Id = "soul4">
+              <option value = "0" selected> None </option>
+              <option value = "1"> Shadow </option>
+              <option value = "2"> Claws </option>
+              <option value = "3"> Seductress </option>
+            </select>
+          </td>
+          <td> <!-- Critical -->
+            <input type = "checkbox" id = "critical4" />
+          </td>
+          <td> <!-- Critical Damage -->
+            <input type = "number" value = "150" id = "cdmg4" />
+          </td>
+          <td> <!-- Atk/Dmg Buff -->
+            <select name = "buff" id = "buff4">
+              <option value = "0" selected> None </option>
+              <option value = "1"> Bunny Dance  20% Atk </option>
+              <option value = "2"> Brotherly Bond 25% Atk </option>
+              <option value = "3"> Star  30% Dmg Inc. </option>
+            </select>
+          </td>
+          <td> <!-- Oitsuki Buff -->
+            <input type = "checkbox" id = "oBuff4" />
+          </td> 
+          <td> <!-- Death -->
+            <input type = "checkbox" id = "death4" />
+          </td>       
+          <td> <!-- Bind -->
+            <input type = "checkbox" id = "bind4" />
+          </td>
+          <td> <!-- Total Damage -->
+            <input type = "text" id = "totalDamage4" value = "0" disabled />
+          </td>
+          <td> <!-- Calculate! -->
+            <input type = "button" value = "calculate" onclick = "cal(4)"/>
           </td>          
         </tr>
       </form>
