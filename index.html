@@ -4,9 +4,9 @@
     <base href = "https://salvist.github.io/OApp/" />
     <link rel="icon" type="image/png" href="seimei.png" />
     
-    <script> <!-- Calculation Function JavaScript -->;  
+    <script> //Calculation Function JavaScript 
       function cal(data){
-        <!-- Data Handler -->;
+        //Data Handler
         var buffH, oBuffH, dmgBuffH, dmgDebuffH, sMulH, atkH, bAtkH, critH, cdmgH, soulH, tDmgH, deathH, bindH;
         if(data == 1) {
           buffH = document.getElementById("buff1").value;
@@ -33,22 +33,34 @@
           cdmgH = document.getElementById("cdmg2").value;
           tDmgH = document.getElementById("totalDamage2").value;
         }
+        console.log(buffH);
+        console.log(oBuffH);
+        console.log(soulH);
+        console.log(deathH);
+        console.log(deathH);
+        console.log(bindH);
+        console.log(sMulH);
+        console.log(atkH);
+        console.log(bAtkH);
+        console.log(critH);
+        console.log(cdmgH);
+        
         var atkBuff = 1.0;
-        <!--       none, bunny, kamai, oitsuki      -->;
+        //         none, bunny, kamai, oitsuki
         var aBuff = [0.0, 0.2, 0.25, 0.2];
-        if (oBuffH === "1") atkBuff = atkBuff + aBuff[1];
-        if (buffH === "2") atkBuff = atkBuff + aBuff[2];
+        if (oBuffH == true) atkBuff = atkBuff + aBuff[1];
+        if (buffH == "2") atkBuff = atkBuff + aBuff[2];
         if (Boolean(oBuffH) == true) atkBuff = atkBuff + aBuff[3];
 
         var dmgBuff = 1.0;
-        if (buffH === "3") dmgBuff = dmgBuff * 1.3 <!--star-->
-        if (soulH === "1") dmgBuff = dmgBuff * 1.4 <!--shadow-->
+        if (buffH == "3") dmgBuff = dmgBuff * 1.3 <!--star-->
+        if (soulH == "1") dmgBuff = dmgBuff * 1.4 <!--shadow-->
         
-        <!--        none, death, bind, ushi -->;
+        //          none, death, bind, ushi
         var debuff = [0.0, 0.3, 0.4, 0.15];
         var dmgDebuff = 0.0;
-        if(Boolean(deathH) === true) dmgDebuff = dmgDebuff + debuff[1];
-        if(Boolean(bindH) === true) dmgDebuff = dmgDebuff + debuff[2];
+        if(Boolean(deathH) == true) dmgDebuff = dmgDebuff + debuff[1];
+        if(Boolean(bindH) == true) dmgDebuff = dmgDebuff + debuff[2];
         
         var skillMul = Number(sMulH)/100;
         
@@ -59,7 +71,7 @@
         var tempdef;
         var dmg1;
         
-        if(Boolean(critH) === true) dmg = dmg * Number(cdmgH) / 100;
+        if(Boolean(critH) == true) dmg = dmg * Number(cdmgH) / 100;
         
         if(data === 1){
           if(soulH === "2"){
