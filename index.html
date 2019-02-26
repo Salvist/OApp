@@ -4,6 +4,12 @@
     <base href = "https://salvist.github.io/OApp/" />
     <link rel="icon" type="image/png" href="seimei.png" />
     
+    <style>
+      td{
+        width: 120px;
+      }
+    </style>
+    
     <script> //Calculation Function JavaScript 
       function cal(data){
         //Data Handler
@@ -137,11 +143,14 @@
       
       <tr>
         <td>
-          Defense: <input type = "number" value = "0" id = "defense" />
+          Defense:
+        </td>
+        <td>
+          <input type = "number" value = "0" id = "defense" />
         </td>
       </tr>
       
-      <tr>
+      <tr style="text-align:center;">
         <td>Attack</td>
         <td>Bonus Attack</td>
         <td>Skill %</td>
