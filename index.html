@@ -36,19 +36,19 @@
         var atkBuff = 1.0;
         <!--       none, bunny, kamai, oitsuki      -->;
         var aBuff = [0.0, 0.2, 0.25, 0.2];
-        if (oBuffH == "1") atkBuff = atkBuff + aBuff[1];
-        if (buffH == "2") atkBuff = atkBuff + aBuff[2];
+        if (oBuffH === "1") atkBuff = atkBuff + aBuff[1];
+        if (buffH === "2") atkBuff = atkBuff + aBuff[2];
         if (Boolean(oBuffH) == true) atkBuff = atkBuff + aBuff[3];
 
         var dmgBuff = 1.0;
-        if (buffH == "3") dmgBuff = dmgBuff * 1.3 <!--star-->
-        if (soulH == "1") dmgBuff = dmgBuff * 1.4 <!--shadow-->
+        if (buffH === "3") dmgBuff = dmgBuff * 1.3 <!--star-->
+        if (soulH === "1") dmgBuff = dmgBuff * 1.4 <!--shadow-->
         
         <!--        none, death, bind, ushi -->;
         var debuff = [0.0, 0.3, 0.4, 0.15];
         var dmgDebuff = 0.0;
-        if(Boolean(deathH) == true) dmgDebuff = dmgDebuff + debuff[1];
-        if(Boolean(bindH) == true) dmgDebuff = dmgDebuff + debuff[2];
+        if(Boolean(deathH) === true) dmgDebuff = dmgDebuff + debuff[1];
+        if(Boolean(bindH) === true) dmgDebuff = dmgDebuff + debuff[2];
         
         var skillMul = Number(sMulH)/100;
         
@@ -59,28 +59,27 @@
         var tempdef;
         var dmg1;
         
+        if(Boolean(critH) === true) dmg = dmg * Number(cdmgH) / 100;
         
-        if(Boolean(critH) == true) dmg = dmg * Number(cdmgH) / 100;
-        
-        if(data == 1){
-        if(soulH == "2"){
-          tempdef = def * 45 / 100
-          dmg1 = tAtk * skillMul * (300 / (300 + tempdef)) * dmgBuff * (1 + dmgDebuff);
-          if(Boolean(critH) == true) dmg1 = dmg1 * Number(cdmgH) / 100;
-          document.getElementById("totalDamage1").value = dmg.toFixed(2) + " OR " + dmg1.toFixed(2);
-        } else {
-          document.getElementById("totalDamage1").value = dmg.toFixed(2);
+        if(data === 1){
+          if(soulH === "2"){
+            tempdef = def * 45 / 100
+            dmg1 = tAtk * skillMul * (300 / (300 + tempdef)) * dmgBuff * (1 + dmgDebuff);
+            if(Boolean(critH) === true) dmg1 = dmg1 * Number(cdmgH) / 100;
+            document.getElementById("totalDamage1").value = dmg.toFixed(2) + " OR " + dmg1.toFixed(2);
+          } else {
+            document.getElementById("totalDamage1").value = dmg.toFixed(2);
+          }
         }
-        }
-        if(data == 2){
-        if(soulH == "2"){
-          tempdef = def * 45 / 100
-          dmg1 = tAtk * skillMul * (300 / (300 + tempdef)) * dmgBuff * (1 + dmgDebuff);
-          if(Boolean(critH) == true) dmg1 = dmg1 * Number(cdmgH) / 100;
-          document.getElementById("totalDamage2").value = dmg.toFixed(2) + " OR " + dmg1.toFixed(2);
-        } else {
-          document.getElementById("totalDamage2").value = dmg.toFixed(2);
-        }
+        if(data === 2){
+          if(soulH === "2"){
+            tempdef = def * 45 / 100
+            dmg1 = tAtk * skillMul * (300 / (300 + tempdef)) * dmgBuff * (1 + dmgDebuff);
+            if(Boolean(critH) == true) dmg1 = dmg1 * Number(cdmgH) / 100;
+            document.getElementById("totalDamage2").value = dmg.toFixed(2) + " OR " + dmg1.toFixed(2);
+          } else {
+            document.getElementById("totalDamage2").value = dmg.toFixed(2);
+          }
         }
         
       }
@@ -165,9 +164,6 @@
           <td> <!-- Total Damage -->
             <input type = "text" id = "totalDamage1" value = "0" disabled />
           </td>
-          <td>
-            <input type = "submit" />
-          </td>
           <td> <!-- Calculate! -->
             <input type = "button" value = "calculate" onclick = "cal(1)"/>
           </td>          
@@ -219,9 +215,6 @@
           </td>
           <td> <!-- Total Damage -->
             <input type = "text" id = "totalDamage2" value = "0" disabled />
-          </td>
-          <td>
-            <input type = "submit" />
           </td>
           <td> <!-- Calculate! -->
             <input type = "button" value = "calculate" onclick = "cal(2)"/>
