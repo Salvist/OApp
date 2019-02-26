@@ -69,7 +69,8 @@
         var atkBuff = 1.0;
         //         none, bunny, kamai, oitsuki
         var aBuff = [0.0, 0.2, 0.25, 0.2];
-        if (oBuffH == true) atkBuff = atkBuff + aBuff[1];
+        if (oBuffH == true) atkBuff = atkBuff + aBuff[3];
+        if (buffH == "1") atkBuff = atkBuff + aBuff[1]
         if (buffH == "2") atkBuff = atkBuff + aBuff[2];
         if (Boolean(oBuffH) == true) atkBuff = atkBuff + aBuff[3];
 
@@ -104,7 +105,7 @@
         } else if(soulH == "3"){
           seduc1 = tAtk * 1.2;
           seduc2 = tAtk * 1.2 * 5;
-          tDmg = dmg.toFixed(2) + " + " + seduc1 + " ~ " + seduc2;
+          tDmg = dmg.toFixed(2) + " + " + seduc1.toFixed(0) + " ~ " + seduc2.toFixed(0);
         } else {
           tDmg = dmg.toFixed(2);
         }
