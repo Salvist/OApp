@@ -50,7 +50,7 @@
         if(Boolean(deathH) == true) dmgDebuff = dmgDebuff + debuff[1];
         if(Boolean(bindH) == true) dmgDebuff = dmgDebuff + debuff[2];
         
-        var skillMul = Number(sMulH).value)/100;
+        var skillMul = Number(sMulH)/100;
         
         let tAtk = Number(atkH) * atkBuff + Number(bAtkH);
         let def = Number(document.getElementById("defense").value);
@@ -156,7 +156,7 @@
             <input type = "submit" />
           </td>
           <td> <!-- Calculate! -->
-            <input type = "button" value = "calculate" onclick = "cal(1)"/>
+            <input type = "button" value = "calculate" onclick = "cal("1")"/>
           </td>          
         </tr>
       </form>
@@ -211,7 +211,7 @@
             <input type = "submit" />
           </td>
           <td> <!-- Calculate! -->
-            <input type = "button" value = "calculate" onclick = "cal(2)"/>
+            <input type = "button" value = "calculate" onclick = "cal("2")"/>
           </td>          
         </tr>
       </form>
