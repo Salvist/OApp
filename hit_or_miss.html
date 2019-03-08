@@ -17,7 +17,13 @@
         hit = document.getElementById("eff_hit").value;
         res = document.getElementById("eff_res").value;
         
-        s_rate = base * (1 + hit/100) / (1 + res/100);
+        console.log("base = " + base);
+        console.log("hit = " + hit);
+        console.log("res = " + res);
+        
+        s_rate = (base + (base * hit / 100)) / (1 + res / 100);
+        console.log("success rate = " + s_rate;
+        
         document.getElementById("success").value = s_rate.toFixed(2);
       }
     </script>
