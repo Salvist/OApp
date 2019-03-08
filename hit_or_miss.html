@@ -1,16 +1,50 @@
 <html>
   <head>
+    <title> Onmyoji Calculator </title>
+    <base href = "https://salvist.github.io/OApp/" />
+    <link rel="icon" type="image/png" href="seimei.png" />
+    <!-- menu navigation -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
     <script>
       $(function(){
         $('#header').load('menu_navigation.html');
       });
     </script>
+    <script>
+      function(){
+        let base, hit, res, s_rate;
+        base = document.getElementById("base_c").value;
+        hit = document.getElementById("eff_hit").value;
+        res = document.getElementById("eff_res").value;
+        
+        s_rate = base * (1 + hit/100) / (1 + res/100);
+        document.getElementById("success").value = s_rate.toFixed(2);
+      }
+    </script>
   </head>
   <body>
     <!-- menu navigation -->
     <div id="header">
     </div>
+    
+    <!-- label on top -->
+    <table>
+      <tr>
+        <td>Base Chance</td>
+        <td>Effect Hit</td>
+        <td>Effect Res</td>
+        <td>Success Rate %</td>
+      </tr>
+      <form id="data1">
+        <tr>
+          <td><input type="number" value="0" id="base_c" /></td>
+          <td><input type="number" value="0" id="eff_hit" /></td>
+          <td><input type="number" value="0" id="eff_res" /></td>
+          <td><input type="text" value="0" id="success" disabled /></td>
+          <td><input type="button" value="calculate" onclick="cal()" /></td>
+        </tr>
+      </form>
+    </table>
   </body>
 </html>
     
