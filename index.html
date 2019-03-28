@@ -33,64 +33,69 @@
     <script> //Calculation Function JavaScript 
       function cal(data){
         //Data Handler
-        let buffH, oBuffH, dmgBuffH, dmgDebuffH, sMulH, atkH, bAtkH, critH, cdmgH, soulH, deathH, bindH;
+        let atkH, bAtkH, sMulH, hitH, soulH, critH, cdmgH, buffH, oBuffH, deathH, bindH;
         if(data == 1) {
-          buffH = document.getElementById("buff1").value;
-          oBuffH = document.getElementById("oBuff1").checked;
-          soulH = document.getElementById("soul1").value;
-          deathH = document.getElementById("death1").checked;
-          bindH = document.getElementById("bind1").checked;
-          sMulH = document.getElementById("skillMultiplier1").value;
           atkH = document.getElementById("atk1").value;
           bAtkH = document.getElementById("bAtk1").value;
+          sMulH = document.getElementById("skillMultiplier1").value;
+          hitH = document.getElementById("nHit1").value;
+          soulH = document.getElementById("soul1").value;
           critH = document.getElementById("critical1").checked;
           cdmgH = document.getElementById("cdmg1").value;
+          buffH = document.getElementById("buff1").value;
+          oBuffH = document.getElementById("oBuff1").checked;
+          deathH = document.getElementById("death1").checked;
+          bindH = document.getElementById("bind1").checked;
         } else if(data == 2) {
-          buffH = document.getElementById("buff2").value;
-          oBuffH = document.getElementById("oBuff2").checked;
-          soulH = document.getElementById("soul2").value;
-          deathH = document.getElementById("death2").checked;
-          bindH = document.getElementById("bind2").checked;
-          sMulH = document.getElementById("skillMultiplier2").value;
           atkH = document.getElementById("atk2").value;
           bAtkH = document.getElementById("bAtk2").value;
+          sMulH = document.getElementById("skillMultiplier2").value;
+          hitH = document.getElementById("nHit2").value;
+          soulH = document.getElementById("soul2").value;
           critH = document.getElementById("critical2").checked;
           cdmgH = document.getElementById("cdmg2").value;
+          buffH = document.getElementById("buff2").value;
+          oBuffH = document.getElementById("oBuff2").checked;
+          deathH = document.getElementById("death2").checked;
+          bindH = document.getElementById("bind2").checked;
         } else if(data == 3){
-          buffH = document.getElementById("buff3").value;
-          oBuffH = document.getElementById("oBuff3").checked;
-          soulH = document.getElementById("soul3").value;
-          deathH = document.getElementById("death3").checked;
-          bindH = document.getElementById("bind3").checked;
-          sMulH = document.getElementById("skillMultiplier3").value;
           atkH = document.getElementById("atk3").value;
           bAtkH = document.getElementById("bAtk3").value;
+          sMulH = document.getElementById("skillMultiplier3").value;
+          hitH = document.getElementById("nHit3").value;
+          soulH = document.getElementById("soul3").value;
           critH = document.getElementById("critical3").checked;
           cdmgH = document.getElementById("cdmg3").value;
+          buffH = document.getElementById("buff3").value;
+          oBuffH = document.getElementById("oBuff3").checked;
+          deathH = document.getElementById("death3").checked;
+          bindH = document.getElementById("bind3").checked;
         } else if(data == 4){
-          buffH = document.getElementById("buff4").value;
-          oBuffH = document.getElementById("oBuff4").checked;
-          soulH = document.getElementById("soul4").value;
-          deathH = document.getElementById("death4").checked;
-          bindH = document.getElementById("bind4").checked;
-          sMulH = document.getElementById("skillMultiplier4").value;
           atkH = document.getElementById("atk4").value;
           bAtkH = document.getElementById("bAtk4").value;
+          sMulH = document.getElementById("skillMultiplier4").value;
+          hitH = document.getElementById("nHit4").value;
+          soulH = document.getElementById("soul4").value;
           critH = document.getElementById("critical4").checked;
           cdmgH = document.getElementById("cdmg4").value;
+          buffH = document.getElementById("buff4").value;
+          oBuffH = document.getElementById("oBuff4").checked;
+          deathH = document.getElementById("death4").checked;
+          bindH = document.getElementById("bind4").checked;
         }
         
-        console.log("buff = " + buffH);
-        console.log("oBuff = " + oBuffH);
-        console.log(soulH);
-        console.log(deathH);
-        console.log(deathH);
-        console.log(bindH);
-        console.log(sMulH);
         console.log("atk = " + atkH);
         console.log("bAtk = " + bAtkH);
+        console.log("s. mult. = " + sMulH);
+        console.log("hits = " + hitH);
+        console.log("soul = " + soulH);
         console.log("crit = " + critH);
         console.log("cdmg = " + cdmgH);
+        console.log("buff = " + buffH);
+        console.log("oBuff = " + oBuffH);
+        console.log("death = " + deathH);
+        console.log("bind = " + bindH);
+
         
         var atkBuff = 1.0;
         //         none, bunny, kamai, oitsuki
@@ -114,7 +119,7 @@
         
         let tAtk = Number(atkH) * atkBuff + Number(bAtkH);
         let def = Number(document.getElementById("defense").value);
-        var dmg = tAtk * skillMul * (300 / (300 + def)) * dmgBuff * (1 + dmgDebuff);
+        var dmg = tAtk * skillMul * (300 / (300 + def)) * dmgBuff * (1 + dmgDebuff) * hitH;
         
         var tempdef;
         var dmg1;
@@ -123,15 +128,16 @@
         
         if(Boolean(critH) == true) dmg = dmg * Number(cdmgH) / 100;
         
+        //soul 2  = claws
         if(soulH == "2"){
           tempdef = def * 45 / 100
-          dmg1 = tAtk * skillMul * (300 / (300 + tempdef)) * dmgBuff * (1 + dmgDebuff);
+          dmg1 = tAtk * skillMul * (300 / (300 + tempdef)) * dmgBuff * (1 + dmgDebuff) * hitH;
           if(Boolean(critH) == true) dmg1 = dmg1 * Number(cdmgH) / 100;
           tDmg = dmg.toFixed(2) + " OR " + dmg1.toFixed(2);
-        } else if(soulH == "3"){
+        } else if(soulH == "3"){ //soul 3 = seductress
           seduc1 = tAtk * 1.2;
-          seduc2 = tAtk * 1.2 * 5;
-          tDmg = dmg.toFixed(2) + " + " + seduc1.toFixed(0); //+ " ~ " + seduc2.toFixed(0);
+          seduc2 = tAtk * 1.2 * hitH;
+          tDmg = dmg.toFixed(2) + " + " + seduc1.toFixed(0) + " ~ " + seduc2.toFixed(0);
         } else {
           tDmg = dmg.toFixed(2);
         }
@@ -186,6 +192,9 @@
           <td> <!-- Skill Percentage -->
             <input type = "number" value = "100" id = "skillMultiplier1" />
           </td>
+          <td>
+            <input type = "number" value = "1" id = "nHit1"/>
+          </td>
           <td> <!-- Soul -->
             <select Id = "soul1">
               <option value = "0" selected> None </option>
@@ -237,6 +246,9 @@
           </td>
           <td> <!-- Skill Percentage -->
             <input type = "number" value = "100" id = "skillMultiplier2" />
+          </td>
+          <td>
+            <input type = "number" value = "1" id = "nHit2"/>
           </td>
           <td> <!-- Soul -->
             <select Id = "soul2">
@@ -290,6 +302,9 @@
           <td> <!-- Skill Percentage -->
             <input type = "number" value = "100" id = "skillMultiplier3" />
           </td>
+          <td>
+            <input type = "number" value = "1" id = "nHit3"/>
+          </td>
           <td> <!-- Soul -->
             <select Id = "soul3">
               <option value = "0" selected> None </option>
@@ -341,6 +356,9 @@
           </td>
           <td> <!-- Skill Percentage -->
             <input type = "number" value = "100" id = "skillMultiplier4" />
+          </td>
+          <td>
+            <input type = "number" value = "1" id = "nHit4"/>
           </td>
           <td> <!-- Soul -->
             <select Id = "soul4">
