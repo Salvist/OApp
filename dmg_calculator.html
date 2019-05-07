@@ -100,14 +100,13 @@
         var atkBuff = 1.0;
         //         none, bunny, kamai, oitsuki
         var aBuff = [0.0, 0.2, 0.25, 0.2];
-        if (oBuffH == true) atkBuff = atkBuff + aBuff[3];
         if (buffH == "1") atkBuff = atkBuff + aBuff[1]
         if (buffH == "2") atkBuff = atkBuff + aBuff[2];
         if (Boolean(oBuffH) == true) atkBuff = atkBuff + aBuff[3];
 
         var dmgBuff = 1.0;
-        if (buffH == "3") dmgBuff = dmgBuff * 1.3 <!--star-->
-        if (soulH == "1") dmgBuff = dmgBuff * 1.4 <!--shadow-->
+        if (buffH == "3") dmgBuff = dmgBuff * 1.3 //star
+        if (soulH == "1") dmgBuff = dmgBuff * 1.4 //shadow
         
         //          none, death, bind, ushi
         var debuff = [0.0, 0.3, 0.4, 0.15];
