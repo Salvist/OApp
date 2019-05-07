@@ -15,16 +15,16 @@
       td:nth-child(4){
         width: 50px;
       }
-      td:nth-child(6){
+      td:nth-child(7){ 
         width: 50px;
       }
-      td:nth-child(9){
+      td:nth-child(10){  
         width: 100px;
       }
-      td:nth-child(10){
+      td:nth-child(11){
         width: 50px;
       }
-      td:nth-child(11){
+      td:nth-child(12){
         width: 50px;
       }
     </style>
@@ -33,13 +33,14 @@
     <script> //Calculation Function JavaScript 
       function cal(data){
         //Data Handler
-        let atkH, bAtkH, sMulH, hitH, soulH, critH, cdmgH, buffH, oBuffH, deathH, bindH;
+        let atkH, bAtkH, sMulH, hitH, soulH, bossH, critH, cdmgH, buffH, oBuffH, deathH, bindH;
         if(data == 1) {
           atkH = document.getElementById("atk1").value;
           bAtkH = document.getElementById("bAtk1").value;
           sMulH = document.getElementById("skillMultiplier1").value;
           hitH = document.getElementById("nHit1").value;
           soulH = document.getElementById("soul1").value;
+          bossH = document.getElementById("boss1").value;
           critH = document.getElementById("critical1").checked;
           cdmgH = document.getElementById("cdmg1").value;
           buffH = document.getElementById("buff1").value;
@@ -52,6 +53,7 @@
           sMulH = document.getElementById("skillMultiplier2").value;
           hitH = document.getElementById("nHit2").value;
           soulH = document.getElementById("soul2").value;
+          bossH = document.getElementById("boss2").value;
           critH = document.getElementById("critical2").checked;
           cdmgH = document.getElementById("cdmg2").value;
           buffH = document.getElementById("buff2").value;
@@ -64,6 +66,7 @@
           sMulH = document.getElementById("skillMultiplier3").value;
           hitH = document.getElementById("nHit3").value;
           soulH = document.getElementById("soul3").value;
+          bossH = document.getElementById("boss3").value;
           critH = document.getElementById("critical3").checked;
           cdmgH = document.getElementById("cdmg3").value;
           buffH = document.getElementById("buff3").value;
@@ -76,6 +79,7 @@
           sMulH = document.getElementById("skillMultiplier4").value;
           hitH = document.getElementById("nHit4").value;
           soulH = document.getElementById("soul4").value;
+          bossH = document.getElementById("boss4").value;
           critH = document.getElementById("critical4").checked;
           cdmgH = document.getElementById("cdmg4").value;
           buffH = document.getElementById("buff4").value;
@@ -89,6 +93,7 @@
         console.log("s. mult. = " + sMulH);
         console.log("hits = " + hitH);
         console.log("soul = " + soulH);
+        console.log("boss s. = " + bossH);
         console.log("crit = " + critH);
         console.log("cdmg = " + cdmgH);
         console.log("buff = " + buffH);
@@ -107,7 +112,9 @@
         var dmgBuff = 1.0;
         if (buffH == "3") dmgBuff = dmgBuff * 1.3 //star
         if (soulH == "1") dmgBuff = dmgBuff * 1.4 //shadow
-        
+        if (bossH == "1") dmgBuff = dmgBuff * 1.1 //odokuro 10%
+        if (bossH == "2") dmgBuff = dmgBuff * 1.25 // odokuro 25%
+
         //          none, death, bind, ushi
         var debuff = [0.0, 0.3, 0.4, 0.15];
         var dmgDebuff = 0.0;
@@ -169,7 +176,8 @@
         <th>Bonus Attack</th>
         <th>Skill %</th>
         <th>No. Hit</th>
-        <th>Soul</th> 
+        <th>Soul</th>
+        <th>Boss Soul</th>
         <th>Critical</th>
         <th>Critical<br />Damage</th>
         <th>Atk/Dmg Buff</th>
@@ -203,6 +211,13 @@
               <option value = "3"> Seductress </option>
             </select>
           </td>
+          <td> <!-- Boss Soul-->
+            <select Id = "boss1">
+              <option value = "0" selected> None </option>
+              <option value = "1" selected> Odokuro 10% Dmg Inc. </option>
+              <option value = "2" selected> Odokuro 25% Dmg Inc.</option>
+            </select>
+          </td>
           <td> <!-- Critical -->
             <input type = "checkbox" id = "critical1" />
           </td>
@@ -214,7 +229,7 @@
               <option value = "0" selected> None </option>
               <option value = "1"> Bunny Dance  20% Atk </option>
               <option value = "2"> Brotherly Bond 25% Atk </option>
-              <option value = "3"> Star  30% Dmg Inc. </option>
+              <option value = "3"> Star 30% Dmg Inc. </option>
             </select>
           </td>
           <td> <!-- Oitsuki Buff -->
@@ -256,6 +271,13 @@
               <option value = "1"> Shadow </option>
               <option value = "2"> Claws </option>
               <option value = "3"> Seductress </option>
+            </select>
+          </td>
+          <td> <!-- Boss Soul-->
+            <select Id = "boss2">
+              <option value = "0" selected> None </option>
+              <option value = "1" selected> Odokuro 10% Dmg Inc. </option>
+              <option value = "2" selected> Odokuro 25% Dmg Inc.</option>
             </select>
           </td>
           <td> <!-- Critical -->
@@ -313,6 +335,13 @@
               <option value = "3"> Seductress </option>
             </select>
           </td>
+          <td> <!-- Boss Soul-->
+            <select Id = "boss3">
+              <option value = "0" selected> None </option>
+              <option value = "1" selected> Odokuro 10% Dmg Inc. </option>
+              <option value = "2" selected> Odokuro 25% Dmg Inc.</option>
+            </select>
+          </td>
           <td> <!-- Critical -->
             <input type = "checkbox" id = "critical3" />
           </td>
@@ -366,6 +395,13 @@
               <option value = "1"> Shadow </option>
               <option value = "2"> Claws </option>
               <option value = "3"> Seductress </option>
+            </select>
+          </td>
+          <td> <!-- Boss Soul-->
+            <select Id = "boss4">
+              <option value = "0" selected> None </option>
+              <option value = "1" selected> Odokuro 10% Dmg Inc. </option>
+              <option value = "2" selected> Odokuro 25% Dmg Inc.</option>
             </select>
           </td>
           <td> <!-- Critical -->
