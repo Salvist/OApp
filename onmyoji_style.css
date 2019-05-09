@@ -2,3 +2,6 @@ body{
   background-color: #335387;
   color: #ddeaff;
 }
+input[type=text]{
+  background-color: #c4daff;
+}
