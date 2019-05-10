@@ -1,0 +1,158 @@
+<html>
+  <head>
+    <link rel="icon" type="image/png" href="Icon/seimei.png" />
+    <link rel="stylesheet" type="text/css" href="onmyoji_style.css" />
+    <!-- menu navigation -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+      $(function () {
+        $('#header').load('menu_navigation.html');
+      });
+    </script>
+    <style>
+      table, th, td{
+          border: 1px solid black;
+          border-collapse: collapse;
+      }
+      th:nth-child(n){
+          width: 120px;
+      }
+      td{
+        text-align:center;
+      }
+    </style>
+
+    <script>
+      function cal(){
+
+        let expCh = document.getElementById("expCh").value;
+        var exp = 300 + (20 * (Number(expCh) - 1));
+        console.log("exp = " + exp);
+
+        let expZ, guild, monthly, fifty, hundred, tUp, bond;
+        expZ = document.getElementById("expZ").checked;
+        guild = document.getElementById("guild").checked;
+        monthly = document.getElementById("monthly").checked;
+        fifty = document.getElementById("fifty").checked;
+        hundred = document.getElementById("hundred").checked;
+        tUp = document.getElementById("teamUp").checked;
+        bond = document.getElementById("bond").checked;
+
+        var buff = [2, 1.1, 1.15, 1.5, 2, 1.3];
+        var expBuff = 1.0;
+        if(Boolean(expZ)) expBuff = expBuff * buff[0];
+        if(Boolean(guild)) expBuff = expBuff * buff[1];
+        if(Boolean(monthly)) expBuff = expBuff * buff[2];
+        if(Boolean(fifty)) expBuff = expBuff * buff[3];
+        if(Boolean(hundred)) expBuff = expBuff * buff[4];
+        if(Boolean(tUp)){
+          if(Boolean(bond)){
+            expBuff = expBuff * (buff[5] + 0.1);
+          } else {
+            expBuff = expBuff * buff[5];
+          }
+        }
+        console.log("expBuff = " + expBuff);
+
+        var totalExp = exp * expBuff;
+        console.log("total exp = " + totalExp);
+        var totalEnemy = 150000 / totalExp;
+
+        document.getElementById("totalEnemy").value = totalEnemy.toFixed(1);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="header">
+    </div>
+    <table>
+      <tr>
+        <th rowspan="2" style="width:150px">Explore Chapter</th>
+        <th colspan="7">Buff</th>
+        <th colspan="2">Level</th>
+        <th rowspan="2">Total Enemy</th>
+        <th rowspan="2">Calculate!</th>
+      </tr>
+      <tr>
+        <th>Exp. Zone</th>
+        <th>Guild</th>
+        <th>Monthly Pack</th>
+        <th>+50% Exp</th>
+        <th>+100% Exp</th>
+        <th>Team Up</th>
+        <th>Bond 1</th>
+        <th>From Lv.</th>
+        <th>To Lv.</th>
+      </tr>
+      <form>
+        <tr>
+          <td>
+            <select Id="expCh">
+              <option value="1" selected>Chapter 1</option>
+              <option value="2" >Chapter 2</option>
+              <option value="3" >Chapter 3</option>
+              <option value="4" >Chapter 4</option>
+              <option value="5" >Chapter 5</option>
+              <option value="6" >Chapter 6</option>
+              <option value="7" >Chapter 7</option>
+              <option value="8" >Chapter 8</option>
+              <option value="9" >Chapter 9</option>
+              <option value="10" >Chapter 10</option>
+              <option value="11" >Chapter 11</option>
+              <option value="12" >Chapter 12</option>
+              <option value="13" >Chapter 13</option>
+              <option value="14" >Chapter 14</option>
+              <option value="15" >Chapter 15</option>
+              <option value="16" >Chapter 16</option>
+              <option value="17" >Chapter 17</option>
+              <option value="18" >Chapter 18</option>
+              <option value="19" >Chapter 19</option>
+              <option value="20" >Chapter 20</option>
+              <option value="21" >Chapter 21</option>
+              <option value="22" >Chapter 22</option>
+              <option value="23" >Chapter 23</option>
+              <option value="24" >Chapter 24</option>
+              <option value="25" >Chapter 25</option>
+              <option value="26" >Chapter 26</option>
+              <option value="27" >Chapter 27</option>
+              <option value="28" >Chapter 28</option>
+            </select>
+          </td>
+          <td>
+            <input type="checkbox" Id="expZ" />
+          </td>
+          <td>
+            <input type="checkbox" Id="guild" />
+          </td>
+          <td>
+            <input type="checkbox" Id="monthly" />
+          </td>
+          <td>
+            <input type="checkbox" Id="fifty" />
+          </td>
+          <td>
+            <input type="checkbox" Id="hundred" />
+          </td>
+          <td>
+            <input type="checkbox" Id="teamUp" />
+          </td>
+          <td>
+            <input type="checkbox" Id="bond" />
+          </td>
+          <td>
+            <input type="number" Id="from" value="1" min="1" max="40"/>
+          </td>
+          <td>
+            <input type="number" Id="to" value="20" min="1" max="40"/>
+          </td>
+          <td>
+            <input type="text" id="totalEnemy" value="0" disabled/>
+          </td>
+          <td>
+            <input type="button" value="calculate" onclick="cal()"/>
+          </td>
+        </tr>
+      </form>
+    </table>
+  </body>
+</html>
