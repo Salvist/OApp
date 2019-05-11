@@ -20,6 +20,20 @@
 
     <script>
       function cal(){
+        var expChart =
+        [0,      180,    240,    420,    630,   1040,   1440,   2160,   2790,  3900,
+         4800,  6380,   7590,   9720,  11280,  14040,  15990,  19460,  21840, 26100,
+        28950, 34080,  37440,  43520,  47430,  54540,  59040,  67260,  72390, 81800,
+        87600, 98280, 104790, 116820, 124080, 137540, 151920, 167250, 183560, 200880];
+
+        let from, to;
+        from = document.getElementById("from").value;
+        to = document.getElementById("to").value;
+        var expNeeded = 0;
+        for(i = Number(from); i < Number(to); i++){
+          expNeeded = expNeeded + expChart[i];
+        }
+        console.log("exp needed = " + expNeeded);
 
         let expCh = document.getElementById("expCh").value;
         var exp = 300 + (20 * (Number(expCh) - 1));
@@ -52,7 +66,7 @@
 
         var totalExp = exp * expBuff;
         console.log("total exp = " + totalExp);
-        var totalEnemy = 150000 / totalExp;
+        var totalEnemy = expNeeded / totalExp;
 
         document.getElementById("totalEnemy").value = totalEnemy.toFixed(1);
       }
