@@ -81,12 +81,12 @@
           for(i = Number(from); i < Number(to); i++){
             expNeeded = expNeeded + expChart[i];
           }
-          console.log("exp needed = " + expNeeded);
 
           let target = document.getElementById("target").value;
           if(target == 2){
             expNeeded = expNeeded / 2;
           }
+          console.log("exp needed = " + expNeeded);
 
           let fodderH, fodderLv, fodderExp;
           fodderH = document.getElementById("fodder").value;
@@ -96,8 +96,12 @@
           } else if(fodderH == 2){
             fodderExp = 88803 + 7722 * Number(fodderLv);
           }
+          console.log("fodder exp = " + fodderExp);
+
           var totalDaruma = expNeeded / fodderExp;
+          console.log("total daruma = " + totalDaruma);
           var overflow = Math.abs(expNeeded - fodderExp * totalDaruma.toFixed(0));
+          console.log("overflow = " + overflow);
           document.getElementById("totalDaruma").value = totalDaruma.toFixed(0);
           
           if(expNeeded < fodderExp){
