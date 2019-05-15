@@ -104,9 +104,9 @@
           console.log("overflow = " + overflow);
           document.getElementById("totalDaruma").value = totalDaruma.toFixed(0);
           
-          if(expNeeded < fodderExp){
+          if(expNeeded < fodderExp * totalDaruma.toFixed(0)){
             document.getElementById("overflow").value = String("+" + overflow);
-          } else{
+          } else {
             document.getElementById("overflow").value = String("-" + overflow);
           }
           
