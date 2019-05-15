@@ -19,62 +19,101 @@
     </style>
 
     <script>
-      function cal(){
+      function cal(data){
         var expChart =
         [0,      180,    240,    420,    630,   1040,   1440,   2160,   2790,  3900,
          4800,  6380,   7590,   9720,  11280,  14040,  15990,  19460,  21840, 26100,
         28950, 34080,  37440,  43520,  47430,  54540,  59040,  67260,  72390, 81800,
         87600, 98280, 104790, 116820, 124080, 137540, 151920, 167250, 183560, 200880];
-
-        let from, to;
-        from = document.getElementById("from").value;
-        to = document.getElementById("to").value;
-        var expNeeded = 0;
-        for(i = Number(from); i < Number(to); i++){
-          expNeeded = expNeeded + expChart[i];
-        }
-        console.log("exp needed = " + expNeeded);
-
-        let expCh = document.getElementById("expCh").value;
-        var exp = 300 + (20 * (Number(expCh) - 1));
-        console.log("exp = " + exp);
-
-        let expZ, guild, monthly, fifty, hundred, tUp, bond;
-        expZ = document.getElementById("expZ").checked;
-        guild = document.getElementById("guild").checked;
-        monthly = document.getElementById("monthly").checked;
-        fifty = document.getElementById("fifty").checked;
-        hundred = document.getElementById("hundred").checked;
-        tUp = document.getElementById("teamUp").checked;
-        bond = document.getElementById("bond").checked;
-
-        var buff = [2, 1.1, 1.15, 1.5, 2, 1.3];
-        var expBuff = 1.0;
-        if(Boolean(expZ)) expBuff = expBuff * buff[0];
-        if(Boolean(guild)) expBuff = expBuff * buff[1];
-        if(Boolean(monthly)) expBuff = expBuff * buff[2];
-        if(Boolean(fifty)) expBuff = expBuff * buff[3];
-        if(Boolean(hundred)) expBuff = expBuff * buff[4];
-        if(Boolean(tUp)){
-          if(Boolean(bond)){
-            expBuff = expBuff * (buff[5] + 0.1);
-          } else {
-            expBuff = expBuff * buff[5];
+        
+        if(data == 1){
+          let from, to;
+          from = document.getElementById("from").value;
+          to = document.getElementById("to").value;
+          var expNeeded = 0;
+          for(i = Number(from); i < Number(to); i++){
+            expNeeded = expNeeded + expChart[i];
           }
+          console.log("exp needed = " + expNeeded);
+
+          let expCh = document.getElementById("expCh").value;
+          var exp = 300 + (20 * (Number(expCh) - 1));
+          console.log("exp = " + exp);
+
+          let expZ, guild, monthly, fifty, hundred, tUp, bond;
+          expZ = document.getElementById("expZ").checked;
+          guild = document.getElementById("guild").checked;
+          monthly = document.getElementById("monthly").checked;
+          fifty = document.getElementById("fifty").checked;
+          hundred = document.getElementById("hundred").checked;
+          tUp = document.getElementById("teamUp").checked;
+          bond = document.getElementById("bond").checked;
+
+          var buff = [2, 1.1, 1.15, 1.5, 2, 1.3];
+          var expBuff = 1.0;
+          if(Boolean(expZ)) expBuff = expBuff * buff[0];
+          if(Boolean(guild)) expBuff = expBuff * buff[1];
+          if(Boolean(monthly)) expBuff = expBuff * buff[2];
+          if(Boolean(fifty)) expBuff = expBuff * buff[3];
+          if(Boolean(hundred)) expBuff = expBuff * buff[4];
+          if(Boolean(tUp)){
+            if(Boolean(bond)){
+              expBuff = expBuff * (buff[5] + 0.1);
+            } else {
+              expBuff = expBuff * buff[5];
+            }
+          }
+          console.log("expBuff = " + expBuff);
+
+          var totalExp = exp * expBuff;
+          console.log("total exp = " + totalExp);
+          var totalEnemy = expNeeded / totalExp;
+
+          document.getElementById("totalEnemy").value = totalEnemy.toFixed(1);
         }
-        console.log("expBuff = " + expBuff);
 
-        var totalExp = exp * expBuff;
-        console.log("total exp = " + totalExp);
-        var totalEnemy = expNeeded / totalExp;
+        if(data == 2){
 
-        document.getElementById("totalEnemy").value = totalEnemy.toFixed(1);
+          let from, to;
+          from = document.getElementById("fromD").value;
+          to = document.getElementById("toD").value;
+          var expNeeded = 0;
+          for(i = Number(from); i < Number(to); i++){
+            expNeeded = expNeeded + expChart[i];
+          }
+          console.log("exp needed = " + expNeeded);
+
+          let target = document.getElementById("target").value;
+          if(target == 2){
+            expNeeded = expNeeded / 2;
+          }
+
+          let fodderH, fodderLv, fodderExp;
+          fodderH = document.getElementById("fodder").value;
+          fodderLv = document.getElementById("fodderLv").value;
+          if(fodderH == 1){
+            fodderExp = 5920 + 515 * Number(fodderLv);
+          } else if(fodderH == 2){
+            fodderExp = 88803 + 7722 * Number(fodderLv);
+          }
+          var totalDaruma = expNeeded / fodderExp;
+          var overflow = Math.abs(expNeeded - fodderExp * totalDaruma.toFixed(0));
+          document.getElementById("totalDaruma").value = totalDaruma.toFixed(0);
+          
+          if(expNeeded < fodderExp){
+            document.getElementById("overflow").value = String("+" + overflow);
+          } else{
+            document.getElementById("overflow").value = String("-" + overflow);
+          }
+          
+        }
       }
     </script>
   </head>
   <body>
     <div id="header">
     </div>
+    <h2>Exp Farming</h2>
     <table>
       <tr>
         <th rowspan="2" style="width:150px">Explore Chapter</th>
@@ -159,10 +198,59 @@
             <input type="text" id="totalEnemy" value="0" disabled/>
           </td>
           <td>
-            <input type="button" value="calculate" onclick="cal()"/>
+            <input type="button" value="calculate" onclick="cal(1)"/>
           </td>
         </tr>
       </form>
+    </table>
+    <br><hr />
+    <h2>Daruma Paradise</h2>
+    <table>
+      <tr>
+        <th rowspan="2">Target</th>
+        <th colspan="2">Level</th>
+        <th rowspan="2">Resources</th>
+        <th rowspan="2">Daruma Lv.</th>
+        <th rowspan="2">Calculate!</th>
+        <th rowspan="2">Daruma Needed</th>
+        <th rowspan="2">Overflow</th>
+      </tr>
+      <tr>
+        <th>From Lv.</th>
+        <th>To Lv.</th>
+      </tr>
+      <tr>
+        <td>
+          <select Id="target">
+            <option value="1" selected>Normal Shiki.</option>
+            <option value="2">Grade Daruma</option>
+          </select>
+        </td>
+        <td>
+          <input type="number" Id="fromD" value="1" min="1" max="40"/>
+        </td>
+        <td>
+          <input type="number" Id="toD" value="20" min="1" max="40"/>
+        </td>
+        <td>
+          <select Id="fodder">
+            <option value="1" selected>Red Daruma</option>
+            <option value="2">Blue Daruma</option>
+          </select>
+        </td>
+        <td>
+          <input type="number" Id="fodderLv" value="1" min="1" max="40"/>
+        </td>
+        <td>
+          <input type="button" value="calculate" onclick="cal(2)"/>
+        </td>
+        <td>
+          <input type="text" Id="totalDaruma" value="0" disabled/>
+        </td>
+        <td>
+          <input type="text" Id="overflow" value="0" disabled/>
+        </td>
+      </tr>
     </table>
   </body>
 </html>
