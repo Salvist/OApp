@@ -100,11 +100,15 @@
 
           var totalDaruma = expNeeded / fodderExp;
           console.log("total daruma = " + totalDaruma);
-          var overflow = Math.abs(expNeeded - fodderExp * totalDaruma.toFixed(0));
+          var floatTDaruma = totalDaruma.toFixed(0);
+          if(floatTDaruma == 0){
+            floatTDaruma = 1;
+          }
+          var overflow = Math.abs(expNeeded - fodderExp * floatTDaruma);
           console.log("overflow = " + overflow);
-          document.getElementById("totalDaruma").value = totalDaruma.toFixed(0);
+          document.getElementById("totalDaruma").value = floatTDaruma;
           
-          if(expNeeded < fodderExp * totalDaruma.toFixed(0)){
+          if(expNeeded < fodderExp * floatTDaruma){
             document.getElementById("overflow").value = String("+" + overflow);
           } else {
             document.getElementById("overflow").value = String("-" + overflow);
